@@ -86,9 +86,40 @@ function concertThis() {
     });
 };
 
-
+//function for OMDB movie data
 function movieThis() {
-  console.log("working 3");
+// inputCommand2 = (!inputCommand2) ?  process.argv[3] : "Mr. Nobody";
+// if (!inputCommand2) {
+//   inputCommand2 = "Mr. Nobody";
+// console.log(`     ----------
+// If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
+// It's on Netflix!
+// ----------`);
+// }
+// if (typeof inputCommand2 !== 'undefined'){
+//   inputCommand2 = "Mr. Nobody";
+//   console.log(`     ----------
+//   If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
+//   It's on Netflix!
+//   ----------`);
+// }
+
+  let queryurl = (`http://www.omdbapi.com/?t=${inputCommand2}&y=&plot=short&apikey=trilogy`);
+  // console.log(queryurl);
+  axios.get(queryurl).then(
+    function(response){
+      // console.log(JSON.stringify(response.data, null, 2));
+      console.log(`      ----------
+      Title: ${response.data.Title}
+      Released Date: ${response.data.Released}
+      IMDB Rating: ${response.data.Ratings[0].Value}
+      Rpttem Tomatoes Rating: ${response.data.Ratings[1].Value}
+      Production Country: ${response.data.Country}
+      Language: ${response.data.Language}
+      Plot: ${response.data.Plot}
+      Cast: ${response.data.Actors}
+      ----------`);
+  });
 };
 
 function doWhatItSays() {
