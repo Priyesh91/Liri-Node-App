@@ -88,21 +88,17 @@ function concertThis() {
 
 //function for OMDB movie data
 function movieThis() {
-  inputCommand2 = (!inputCommand2) ?
-   ("Mr. Nobody")
-  //  &&
-  //   console.log(`     ----------
-  // If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
-  // It's on Netflix!
-  // ----------`)
-   : process.argv[3];
-  // if (!inputCommand2) {
-  //   inputCommand2 = "Mr. Nobody";
-  // console.log(`     ----------
-  // If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
-  // It's on Netflix!
-  // ----------`);
-  // }
+  // inputCommand2 = (!inputCommand2) ? ("Mr. Nobody") : process.argv[3];
+  if (!inputCommand2) {
+    inputCommand2 = "Mr. Nobody";
+    console.log(`  ----------
+  If you haven't watched "Mr. Nobody," then you should: <http://www.imdb.com/title/tt0485947/>
+  It's on Netflix!
+  ----------`);
+  } else {
+    inputCommand2 = process.argv[3];
+  }
+  console.log(inputCommand2);
   // if (typeof inputCommand2 !== 'undefined'){
   //   inputCommand2 = "Mr. Nobody";
   //   console.log(`     ----------
