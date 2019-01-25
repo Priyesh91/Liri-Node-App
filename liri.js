@@ -3,6 +3,7 @@ require("dotenv").config();
 const keys = require("./keys.js");
 
 const axios = require("axios");
+const moment = require("moment");
 
 // console.log(process.env.SPOTIFY_ID);
 // console.log(process.env.SPOTIFY_SECRET);
@@ -55,37 +56,57 @@ function concertThis() {
       // console.log(JSON.stringify(response.data[0].venue.country));
       // console.log(JSON.stringify(response.data[0].venue.city));
       // console.log(JSON.stringify(response.data[0].datetime));
-      (response.data.length === 0) ?
-       console.log("No Avaible data"):
-       console.log(response.data[0].venue.name);
-      console.log(response.data[0].venue.country);
-      console.log(response.data[0].venue.city);
-      console.log(response.data[0].datetime); 
+      if (response.data.length === 0) {
+        console.log("No Available data")
+      } else {
+        console.log(`
+        Artist: ${inputCommand2}`);
+        //first set of data
+        console.log(`        ----------
+        Event Venue: ${response.data[0].venue.name}
+        Venue Country: ${response.data[0].venue.country}
+        Venue City: ${response.data[0].venue.city}
+        Date Time: ${moment(response.data[0].datetime).format('MMM Do YY')}
+        ----------`);
+        //second set of data
+        console.log(`        ----------
+        Event Venue: ${response.data[1].venue.name}
+        Venue Country: ${response.data[1].venue.country}
+        Venue City: ${response.data[1].venue.city}
+        Date Time: ${moment(response.data[1].datetime).format('MMM Do YY')}
+        ----------`);
+        //third set of data
+        console.log(`        ----------
+        Event Venue: ${response.data[2].venue.name}
+        Venue Country: ${response.data[2].venue.country}
+        Venue City: ${response.data[2].venue.city}
+        Date Time: ${moment(response.data[2].datetime).format('MMM Do YY')}
+        ----------`);
+      }
     });
-    
-  };
+};
 
 
-  function movieThis() {
-    console.log("working 3");
-  };
+function movieThis() {
+  console.log("working 3");
+};
 
-  function doWhatItSays() {
-    console.log("working 4");
-  };
+function doWhatItSays() {
+  console.log("working 4");
+};
 
 
-  switch (inputCommand) {
-    case "concert-this":
-      return concertThis();
+switch (inputCommand) {
+  case "concert-this":
+    return concertThis();
 
-    case "spotify-this-song":
-      return spotifySong();
+  case "spotify-this-song":
+    return spotifySong();
 
-    case "movie-this":
-      return movieThis();
+  case "movie-this":
+    return movieThis();
 
-    case "do-what-it-says":
-      return doWhatItSays();
+  case "do-what-it-says":
+    return doWhatItSays();
 
-  };
+};
